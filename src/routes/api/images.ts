@@ -1,11 +1,12 @@
 import express from 'express'
 import sharp from 'sharp'
 import fs from 'fs'
+import { promises as fsPromises } from 'fs'
 import path from 'path'
 
 const images = express.Router()
 
-images.get('/', (req, res) => {
+images.get('/', async (req, res): Promise<void> => {
 
   const filename = req.query.filename
   const width = (req.query.width as unknown) as string
@@ -15,6 +16,10 @@ images.get('/', (req, res) => {
     try {
       const fullFilePath = `full/${filename}.jpeg`
       const thumbFilePath = `thumb/${filename}.jpeg`
+
+      if (!fs.existsSync('thumb')) {
+        await fsPromises.mkdir('thumb')
+      }
 
       fs.stat(thumbFilePath, (error, stats)  => {
         if (error) {
