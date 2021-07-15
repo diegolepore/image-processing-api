@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.ts",
+    "build": "npx tsc"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,17 @@
   "bugs": {
     "url": "https://github.com/diegolepore/image-processing-api/issues"
   },
-  "homepage": "https://github.com/diegolepore/image-processing-api#readme"
+  "homepage": "https://github.com/diegolepore/image-processing-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "sharp": "^0.28.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.3.2",
+    "@types/sharp": "^0.28.4",
+    "nodemon": "^2.0.12",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  }
 }
