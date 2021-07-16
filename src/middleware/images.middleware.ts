@@ -1,19 +1,14 @@
 import express from 'express'
-import { promises as fsPromises } from 'fs'
 import fs from 'fs'
 import path from 'path'
-
-const inlineStyles = `position: absolute; left: 50%; 
-  top: 100px; transform: translateX(-50%);
-  font-family: sans-serif; text-align: center;
-  padding: 0 20px 10px 20px; background-color: #ffdd59; border-radius: 8px;`
+import { inlineStyles } from '../utilities/common.utilities'
 
 const checkFullImageExists = (req: express.Request, res: express.Response, next: express.NextFunction): void => {
   const { filename, width, height } = req.query
   
   if(filename && width && height) {
     const sourceformat = req.query.sourceformat || 'jpeg'
-    const fullFilePath = `full/${filename}.${sourceformat}`
+    const fullFilePath = path.resolve('full/', `${filename}.${sourceformat}`)
     fs.stat(fullFilePath, (error)  => {
       if(error) {
         const errorMsg = `<div style="${inlineStyles}">
@@ -45,7 +40,7 @@ const checkFullImageExists = (req: express.Request, res: express.Response, next:
 const checkThumbDirExists = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
   try {
     if (!fs.existsSync('thumb')) {
-      await fsPromises.mkdir('thumb')
+      await fs.promises.mkdir('thumb')
     }
     
     next()
