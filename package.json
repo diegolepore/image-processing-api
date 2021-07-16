@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "npx tsc",
+    "jasmine": "jasmine",
+    "test": "npm run build && npm run jasmine",
     "lint": "eslint . --ext .ts",
     "lint-and-fix": "eslint . --ext .ts --fix",
     "prepare": "husky install"
@@ -23,12 +25,17 @@
   "homepage": "https://github.com/diegolepore/image-processing-api#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "sharp": "^0.28.3"
+    "jasmine": "^3.8.0",
+    "jasmine-spec-reporter": "^7.0.0",
+    "sharp": "^0.28.3",
+    "supertest": "^6.1.3"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jasmine": "^3.8.1",
     "@types/node": "^16.3.2",
     "@types/sharp": "^0.28.4",
+    "@types/supertest": "^2.0.11",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "@typescript-eslint/parser": "^4.28.3",
     "eslint": "^7.30.0",
