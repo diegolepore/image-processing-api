@@ -20,7 +20,7 @@ The main technologies & packages used are:
 npm install
 npm run dev
 ```
-ℹ️ _After executing the above commands, the API will be available at port 3000_
+ℹ️ _After executing the above commands, the API will be available at port 3000._
 
 ![gif: Lets do this!](https://media.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif)
 
@@ -29,7 +29,8 @@ npm run dev
 http://localhost:3000/api/images?filename=laptop&width=550&height=450
 ```
 ℹ️ _Note: This is the base query string needed, if one of the above parameters is not passed or has any errors (like passing a non numeric value) i will throw an error._
-ℹ️ _Note:  Also, make sure you have the files you want to process in the **images/full/** directory before using the API_
+
+ℹ️ _Note:  Also, make sure you have the files you want to process in the **images/full/** directory before using the API._
 
 By executing the above, it will:
 
@@ -38,12 +39,13 @@ By executing the above, it will:
 3. Next, it will store the newly generated image inside the _**images/thumbs/**_ directory.
 4. The name of the generated image will containe a combination of the arguments passed in the query string (e.g. _**laptop-w550-h450.jpeg**_).
 
-ℹ️ _Note: If the thumb directory doesn't exist, the app will create one (this is handle in one of the functions in the middleware)_
-ℹ️ _Note: If the thumb already exists, it won't generate a new one, instead it will only serve the existent image_
+ℹ️ _Note: If the thumb directory doesn't exist, the app will create one (this is handle in one of the functions in the middleware)._
+
+ℹ️ _Note: If the thumb already exists, it won't generate a new one, instead it will only serve the existent image._
 
 # 👍 Other use cases usages
 
-ℹ️ _Examples of cases that will work with the current images in the _**images/full/**_ folder :_
+ℹ️ _Examples of cases that will work with the current images in the **images/full/** folder :_
 
 ```
 http://localhost:3000/api/images?filename=laptop&width=200&height=200
@@ -63,7 +65,7 @@ http://localhost:3000/api/images?filename=programming&width=550&height=450&outpu
 ```
 http://localhost:3000/api/images?filename=lavender&width=1200&height=1200&sourceformat=png&outputformat=jpg
 ```
-ℹ️ _If you execute one of the above endpoints for second time, it wont generate the image again. It will return the image in memory instead_
+ℹ️ _If you execute one of the above endpoints for second time, it wont generate the image again. It will return the image in memory instead._
 
 
 # 👎 Other use cases usages that won't work
