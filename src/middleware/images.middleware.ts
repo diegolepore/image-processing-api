@@ -15,8 +15,6 @@ const checkFullImageExists = (req: express.Request, res: express.Response, next:
           <p>Sorry, the <strong>filename</strong> doesn't exist 😭.</p> 
           <p>Make sure you don't have any typo or something.</p>
         </div>`
-        // eslint-disable-next-line no-console
-        console.log(error)
         res.status(500).send(errorMsg)
       } else {
         next()
@@ -31,8 +29,6 @@ const checkFullImageExists = (req: express.Request, res: express.Response, next:
         <li>"height"</li>
       </ul>
     </div>`
-    // eslint-disable-next-line no-console
-    console.log(errorMsg)
     res.status(500).send(errorMsg)
   }
 }
@@ -48,8 +44,6 @@ const checkThumbDirExists = async (req: express.Request, res: express.Response, 
     const errorMsg = `<div style="${inlineStyles}">
       <p>Whoops! Something went wrong, please try again.</p> 
     </div>`
-    // eslint-disable-next-line no-console
-    console.log(error)
     res.status(500).send(errorMsg)
   }
 }

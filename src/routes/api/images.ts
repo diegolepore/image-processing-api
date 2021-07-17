@@ -24,15 +24,11 @@ images.get('/', imagesMiddleware, async (req: express.Request, res: express.Resp
       .toBuffer()
       
     fs.writeFileSync(thumbFilePath, image)
-    // eslint-disable-next-line no-console
-    console.log('✅ Image has been successfully processed! ✅')
     res.status(201).sendFile(path.resolve(thumbFilePath))
   } catch (error) {
     const errorMsg = `<div style="${inlineStyles}">
       <p>Image cannot be processed.</p>
     </div>`
-    // eslint-disable-next-line no-console
-    console.log(error)
     res.status(500).send(errorMsg)
   }
 })

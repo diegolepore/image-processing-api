@@ -8,9 +8,18 @@ class CustomProcessor extends DisplayProcessor {
 }
 
 const reporter = new SpecReporter({
+    suite: {
+      displayNumber: true
+    },
     spec: {
       displayStacktrace: StacktraceOption.NONE,
       displayDuration: true
+    },
+    summary: {
+      displayErrorMessages: true
+    },
+    prefixes: {
+      successful: '✅ - '
     },
     customProcessors: [CustomProcessor]
   })
