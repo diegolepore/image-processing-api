@@ -15,13 +15,14 @@ The main technologies & packages used are:
 | Husky | https://typicode.github.io/husky/#/ |
 | nodemon | https://nodemon.io/ |
 
-
 # Installation & running dev server
 ```sh
 npm install
 npm run dev
 ```
 ℹ️ _After executing the above commands, the API will be available at port 3000_
+
+![gif: Lets do this!](https://media.giphy.com/media/BpGWitbFZflfSUYuZ9/giphy.gif)
 
 # Basic usage
 ```
@@ -39,6 +40,50 @@ By executing the above, it will:
 
 ℹ️ _Note: If the thumb directory doesn't exist, the app will create one (this is handle in one of the functions in the middleware)_
 ℹ️ _Note: If the thumb already exists, it won't generate a new one, instead it will only serve the existent image_
+
+# 👍 Other use cases usages
+
+ℹ️ _Examples of cases that will work with the current images in the _**images/full/**_ folder :_
+
+```
+http://localhost:3000/api/images?filename=laptop&width=200&height=200
+```
+```
+http://localhost:3000/api/images?filename=programming&width=550&height=450
+```
+```
+http://localhost:3000/api/images?filename=laptop&width=550&height=450&outputformat=png
+```
+```
+http://localhost:3000/api/images?filename=programming&width=2550&height=1450&sourceformat=jpeg
+```
+```
+http://localhost:3000/api/images?filename=programming&width=550&height=450&outputformat=png&sourceformat=jpeg
+```
+
+# 👎 Other use cases usages that won't work
+
+```
+http://localhost:3000/api/images
+```
+```
+http://localhost:3000/api/images?filename=supdude&width=200&height=200
+```
+```
+http://localhost:3000/api/images?filename=programming&width=foo&height=450
+```
+```
+http://localhost:3000/api/images?filename=programming&width=200&height=bar
+```
+```
+http://localhost:3000/api/images?filename=programming&width=foo&height=bar
+```
+```
+http://localhost:3000/api/images?filename=programming&width=2550&height=1450&sourceformat=png
+```
+```
+http://localhost:3000/api/images?filename=programming&width=550&height=450&outputformat=svg&sourceformat=jpeg
+```
 
 # Testing
 ```sh
