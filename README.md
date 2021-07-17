@@ -43,7 +43,7 @@ By executing the above, it will:
 
 ℹ️ _Note: If the thumb already exists, it won't generate a new one, instead it will only serve the existent image._
 
-# 👍 Other use cases usages
+# 👍 Other use cases
 
 ℹ️ _Examples of cases that will work with the current images in the **images/full/** folder :_
 
@@ -68,7 +68,7 @@ http://localhost:3000/api/images?filename=lavender&width=1200&height=1200&source
 ℹ️ _If you execute one of the above endpoints for second time, it wont generate the image again. It will return the image in memory instead._
 
 
-# 👎 Other use cases usages that won't work
+# 👎 Use cases that won't work
 
 ```
 http://localhost:3000/api/images
