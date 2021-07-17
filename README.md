@@ -29,7 +29,7 @@ npm run dev
 http://localhost:3000/api/images?filename=laptop&width=550&height=450
 ```
 ℹ️ _Note: This is the base query string needed, if one of the above parameters is not passed or has any errors (like passing a non numeric value) i will throw an error._
-ℹ️ _Note:  Also, make sure you have the files you want to process in the _**images/full/**_ directory before using the API_
+ℹ️ _Note:  Also, make sure you have the files you want to process in the **images/full/** directory before using the API_
 
 By executing the above, it will:
 
@@ -60,6 +60,8 @@ http://localhost:3000/api/images?filename=programming&width=2550&height=1450&sou
 ```
 http://localhost:3000/api/images?filename=programming&width=550&height=450&outputformat=png&sourceformat=jpeg
 ```
+ℹ️ _If you execute one of the above endpoints for second time, it wont generate the image again. It will return the image in memory instead_
+
 
 # 👎 Other use cases usages that won't work
 
