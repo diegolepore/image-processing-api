@@ -14,8 +14,8 @@ images.get('/', imagesMiddleware, async (req: express.Request, res: express.Resp
   const height = (req.query.height as unknown) as string
   const sourceformat = (req.query.sourceformat as unknown) as ( keyof sharp.FormatEnum | sharp.AvailableFormatInfo) || 'jpeg'
   const outputformat = (req.query.outputformat as unknown) as ( keyof sharp.FormatEnum | sharp.AvailableFormatInfo) || 'jpeg'
-  const fullFilePath = path.resolve('full/', `${filename}.${sourceformat}`)
-  const thumbFilePath = path.resolve('thumb/',`${filename}-w${width}-h${height}.${outputformat}`)
+  const fullFilePath = path.resolve('images/', 'full/', `${filename}.${sourceformat}`)
+  const thumbFilePath = path.resolve('images/', 'thumb/',`${filename}-w${width}-h${height}.${outputformat}`)
 
   try {
     const image = await sharp(fullFilePath)

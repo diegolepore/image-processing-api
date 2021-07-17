@@ -4,15 +4,15 @@ import fs from 'fs'
 import path from 'path'
 
 const request = supertest(app)
+const errorRoute = '/api/images?filename=foo&width=200&height=200'
+const routeImage200x200 = '/api/images?filename=laptop&width=200&height=200'
+const routeImage200x200Svg = '/api/images?filename=laptop&width=200&height=200&outputformat=svg'
+const routeImage300x300SourceJPEGOutputPNG = '/api/images?filename=laptop&width=300&height=300&sourceformat=jpeg&outputformat=png'
+const routeImage300x300SourcePng = '/api/images?filename=laptop&width=200&height=200&sourceformat=png'
+const thumbPath = path.resolve('images/', 'thumb/', 'laptop-w200-h200.jpeg')
+const thumbPathPng = path.resolve('images/', 'thumb/', 'laptop-w300-h300.png')
 
 describe('🧪 /images resource ', () => {
-  const errorRoute = '/api/images?filename=foo&width=200&height=200'
-  const routeImage200x200 = '/api/images?filename=laptop&width=200&height=200'
-  const routeImage200x200Png = '/api/images?filename=laptop&width=200&height=200&outputformat=png'
-  const routeImage200x200Svg = '/api/images?filename=laptop&width=200&height=200&outputformat=svg'
-  const thumbPath = path.resolve('thumb/', 'laptop-w200-h200.jpeg')
-  const thumbPathPng = path.resolve('thumb/', 'laptop-w200-h200.png')
-
   afterAll( async ()=> {
     await fs.unlink(thumbPath, (err) => { if (err) throw err })
     await fs.unlink(thumbPathPng, (err) => { if (err) throw err })
@@ -39,8 +39,8 @@ describe('🧪 /images resource ', () => {
     expect(response.status).toBe(200)
   })
   
-  it('Should generate image with PNG extenssion with status 201', async () => {
-    const response = await request.get(routeImage200x200Png)
+  it('Should generate image with sourceformat JPEG and outputformat PNG extenssions with status 201', async () => {
+    const response = await request.get(routeImage300x300SourceJPEGOutputPNG)
     fs.access(thumbPathPng, fs.constants.F_OK, (err) => {
       expect(err).toBe(null)
     })
@@ -49,6 +49,11 @@ describe('🧪 /images resource ', () => {
 
   it('Should return status 500 error if it cannot be generated to SVG format', async () => {
     const response = await request.get(routeImage200x200Svg)
+    expect(response.status).toBe(500)
+  })
+
+  it('Should return status 500 error sourceformat does not exist', async () => {
+    const response = await request.get(routeImage300x300SourcePng)
     expect(response.status).toBe(500)
   })
 })

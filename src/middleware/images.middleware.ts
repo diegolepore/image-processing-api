@@ -8,7 +8,7 @@ const checkFullImageExists = (req: express.Request, res: express.Response, next:
   
   if(filename && width && height) {
     const sourceformat = req.query.sourceformat || 'jpeg'
-    const fullFilePath = path.resolve('full/', `${filename}.${sourceformat}`)
+    const fullFilePath = path.resolve('images/', 'full/', `${filename}.${sourceformat}`)
     fs.stat(fullFilePath, (error)  => {
       if(error) {
         const errorMsg = `<div style="${inlineStyles}">
@@ -59,7 +59,7 @@ const checkThumbImageExists = async (req: express.Request, res: express.Response
   const width = (req.query.width as unknown) as string
   const height = (req.query.height as unknown) as string
   const outputformat = req.query.outputformat || 'jpeg'
-  const thumbFilePath = `thumb/${filename}-w${width}-h${height}.${outputformat}`
+  const thumbFilePath = path.resolve('images/', 'thumb/',`${filename}-w${width}-h${height}.${outputformat}`)
     
   fs.stat(thumbFilePath, (error)  => {
     if (error) { 
