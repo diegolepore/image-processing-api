@@ -60,6 +60,9 @@ http://localhost:3000/api/images?filename=programming&width=2550&height=1450&sou
 ```
 http://localhost:3000/api/images?filename=programming&width=550&height=450&outputformat=png&sourceformat=jpeg
 ```
+```
+http://localhost:3000/api/images?filename=lavender&width=1200&height=1200&sourceformat=png&outputformat=jpg
+```
 ℹ️ _If you execute one of the above endpoints for second time, it wont generate the image again. It will return the image in memory instead_
 
 
