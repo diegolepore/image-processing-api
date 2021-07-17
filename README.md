@@ -40,6 +40,16 @@ By executing the above, it will:
 ℹ️ _Note: If the thumb directory doesn't exist, the app will create one (this is handle in one of the functions in the middleware)_
 ℹ️ _Note: If the thumb already exists, it won't generate a new one, instead it will only serve the existent image_
 
+# Testing
+```sh
+npm run test
+```
+There's also a test script for development:
+
+```sh
+npm run test:watch
+```
+
 # Building for production & runnig the server
 
 ```sh
