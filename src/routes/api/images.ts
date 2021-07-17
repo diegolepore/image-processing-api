@@ -23,7 +23,7 @@ images.get('/', imagesMiddleware, async (req: express.Request, res: express.Resp
       .resize({ width: parseInt(width), height: parseInt(height) })
       .toBuffer()
       
-    fs.writeFileSync(thumbFilePath, image)
+    await fs.promises.writeFile(thumbFilePath, image)
     res.status(201).sendFile(path.resolve(thumbFilePath))
   } catch (error) {
     const errorMsg = `<div style="${inlineStyles}">
