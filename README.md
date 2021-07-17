@@ -86,6 +86,12 @@ http://localhost:3000/api/images?filename=programming&width=2550&height=1450&sou
 ```
 http://localhost:3000/api/images?filename=programming&width=550&height=450&outputformat=svg&sourceformat=jpeg
 ```
+# Building for production & runnig the server
+
+```sh
+npm run build
+node build
+```
 
 # Testing
 ```sh
@@ -97,9 +103,17 @@ There's also a test script for development:
 npm run test:watch
 ```
 
-# Building for production & runnig the server
-
+# Linting
 ```sh
-npm run build
-node build
+npm run lint
+```
+_Linting and fixing_
+```sh
+npm run lint-and-fix
+```
+
+# Other
+In order to have automatically have Git hooks enabled after install, run the following commnad. You can read more about it in the [Husky documentation](https://typicode.github.io/husky/#/?id=install).
+```sh
+npm run prepare
 ```
