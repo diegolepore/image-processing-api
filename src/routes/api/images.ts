@@ -26,7 +26,7 @@ images.get('/', imagesMiddleware, async (req: express.Request, res: express.Resp
     fs.writeFileSync(thumbFilePath, image)
     // eslint-disable-next-line no-console
     console.log('✅ Image has been successfully processed! ✅')
-    res.status(200).sendFile(path.resolve(thumbFilePath))
+    res.status(201).sendFile(path.resolve(thumbFilePath))
   } catch (error) {
     const errorMsg = `<div style="${inlineStyles}">
       <p>Image cannot be processed.</p>
