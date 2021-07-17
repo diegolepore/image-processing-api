@@ -57,12 +57,12 @@ describe('🧪 /images resource ', () => {
     expect(response.status).toBe(500)
   })
 
-  it('Returns a status 500 error if width querystring is not a number', async () => {
+  it('Returns a status 500 error if width property value is not a number', async () => {
     const response = await request.get('/api/images?filename=laptop&width=bad&height=200')
     expect(response.status).toBe(500)
   })
 
-  it('Returns a status 500 error if height querystring is not a number', async () => {
+  it('Returns a status 500 error if height property value is not a number', async () => {
     const response = await request.get('/api/images?filename=laptop&width=200&height=bad')
     expect(response.status).toBe(500)
   })
