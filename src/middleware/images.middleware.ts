@@ -39,8 +39,8 @@ const checkFullImageExists = (req: express.Request, res: express.Response, next:
 
 const checkThumbDirExists = async (req: express.Request, res: express.Response, next: express.NextFunction): Promise<void> => {
   try {
-    if (!fs.existsSync('thumb')) {
-      await fs.promises.mkdir('thumb')
+    if (!fs.existsSync('images/thumb')) {
+      await fs.promises.mkdir('images/thumb')
     }
     
     next()
