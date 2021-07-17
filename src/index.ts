@@ -6,7 +6,7 @@ const port = 3000
 
 app.use('/api', routes)
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   // eslint-disable-next-line no-console
   console.log(`Server started at http://localhost:${port}`)
 })
