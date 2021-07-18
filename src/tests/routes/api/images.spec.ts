@@ -15,11 +15,11 @@ const thumbPathPng = path.resolve('images/', 'thumb/', 'laptop-w300-h300.png')
 const thumbPathJpg = path.resolve('images/', 'thumb/', 'lavender-w1200-h1200.jpg')
 
 describe('🧪 /images resource ', () => {
-  afterAll( async ()=> {
-    await fs.unlink(thumbPath, (err) => { if (err) throw err })
-    await fs.unlink(thumbPathPng, (err) => { if (err) throw err })
-    await fs.unlink(thumbPathJpg, (err) => { if (err) throw err })
-  })
+  // afterAll( async ()=> {
+  //   await fs.unlink(thumbPath, (err) => { if (err) throw err })
+  //   await fs.unlink(thumbPathPng, (err) => { if (err) throw err })
+  //   await fs.unlink(thumbPathJpg, (err) => { if (err) throw err })
+  // })
 
   it('Should return 500 error if filename does not exists', async () => {
     const response = await request.get(errorRoute)
@@ -76,5 +76,11 @@ describe('🧪 /images resource ', () => {
   it('Returns a status 500 error if height property value is not a number', async () => {
     const response = await request.get('/api/images?filename=laptop&width=200&height=bad')
     expect(response.status).toBe(500)
+  })
+
+  it('Deletes the thumbs folder and returns status 200', async () => {
+    const response = await request.get('/api/images/deletethumbs')
+    expect(response.text).toBe('All thumbs have been deleted')
+    expect(response.status).toBe(200)
   })
 })

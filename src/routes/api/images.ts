@@ -1,5 +1,6 @@
 import express from 'express'
 import sharp from 'sharp'
+import rimraf from 'rimraf'
 import fs from 'fs'
 import path from 'path'
 import { inlineStyles } from '../../utilities/common.utilities'
@@ -31,6 +32,13 @@ images.get('/', imagesMiddleware, async (req: express.Request, res: express.Resp
     </div>`
     res.status(500).send(errorMsg)
   }
+})
+
+images.get('/deletethumbs', (req: express.Request, res: express.Response) => {
+  const thumbsPath = path.resolve('images/', 'thumb/')
+  rimraf(thumbsPath, () => {
+    res.status(200).send('All thumbs have been deleted')
+  })
 })
 
 export default images
